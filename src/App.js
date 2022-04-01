@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import Form from "./Components/Form";
+import * as yup from 'yup';
+import formSchema from "./validation/schema";
+import { Route, Switch, Link } from 'react-router-dom';
 
 const initialFormValues = {
   name: '',
@@ -30,8 +33,16 @@ const App = () => {
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(intitialDisabled);
 
-// input change here
+const inputChange = (name, value) => {
+  yup
+    .reach(formSchema, name)
+    .validate(value)
+    .then(() => setFormErrors({...formErrors, [name]: ''}))
+    .catch(err => setFormErrors({...formErrors, [name]: err.errors[0]}))
 
+  setFormValue({...formValue, [name]: value})
+}
+ 
 const formSubmit = () => {
   const newOrder = {
     name: formValue.name.trim(),
@@ -49,6 +60,11 @@ const formSubmit = () => {
   setOrder([newOrder, ...order]);
   setFormValue(initialFormValues);
 }
+
+useEffect(() => {
+  formSchema.isValid(formValue)
+    .then(valid => setDisabled(!valid))
+}, [formValue])
 
   return (
     <>
