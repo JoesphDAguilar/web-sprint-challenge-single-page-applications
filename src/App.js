@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-const initialFormSValues = {
+import Form from "./Components/Form";
+
+const initialFormValues = {
   name: '',
   size: '',
   pepperoni: false,
@@ -12,12 +14,40 @@ const initialFormSValues = {
   specialIns: ''
 }
 
-const initialFormErros = {
+const initialFormErrors = {
   name: '',
   size: ''
 }
 
+const initialOrder = []
+const intitialDisabled = true;
+
 const App = () => {
+
+  const [order, setOrder] = useState(initialOrder);
+  const [formValue, setFormValue] = useState(initialFormValues);
+  const [formErrors, setFormErrors] = useState(initialFormErrors);
+  const [disabled, setDisabled] = useState(intitialDisabled);
+
+// input change here
+
+const formSubmit = () => {
+  const newOrder = {
+    name: formValue.name.trim(),
+    size: formValue.size,
+    toppings: ['pepperoni', 
+                'sausage', 
+                'pineapple', 
+                'mushrooms', 
+                'anchovies', 
+                'bacon'].filter(topping => formValue[topping]),
+    specialIns: formValue.specialIns.trim(),
+  }
+
+  setOrder([newOrder, ...order]);
+  setFormValue(initialFormValues);
+}
+
   return (
     <>
       <h1>Bloomtech Eats</h1>
