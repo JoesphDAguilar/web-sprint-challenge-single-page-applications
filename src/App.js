@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const initialFormState = {
+const initialFormSValues = {
   name: '',
   size: '',
   pepperoni: false,
@@ -10,6 +10,11 @@ const initialFormState = {
   anchovies: false,
   bacon: false,
   specialIns: ''
+}
+
+const initialFormErros = {
+  name: '',
+  size: ''
 }
 
 const App = () => {
