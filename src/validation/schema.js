@@ -17,13 +17,15 @@ const formSchema = yup.object().shape({
                 'med',
                 'large',
                 'xlarger'], 'Must choose a size!'),
+    specialInt: yup
+        .string(),
                 
     pepperoni: yup.boolean(),
     sausage: yup.boolean(),
     pineapple: yup.boolean(),
     mushrooms: yup.boolean(),
     anchovies: yup.boolean(),
-    bacon: yup.boolean()
+    bacon: yup.boolean(),
 })
 
 export default formSchema;

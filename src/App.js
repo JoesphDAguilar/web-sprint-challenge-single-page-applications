@@ -4,6 +4,7 @@ import Form from "./Components/Form";
 import * as yup from 'yup';
 import formSchema from "./validation/schema";
 import { Route, Switch, Link } from 'react-router-dom';
+import Home from "./Components/HomePage";
 
 const initialFormValues = {
   name: '',
@@ -67,12 +68,27 @@ useEffect(() => {
 }, [formValue])
 
   return (
-    <>
+    <div>
       <h1>Bloomtech Eats</h1>
-      <div>
         <h2>Bloomtech Pizzeria </h2>
+      <div>
+        <Switch>
+          <Route path='/pizza'>
+            <Form
+              values={formValue}
+              change={inputChange}
+              submit={formSubmit}
+              disabled={disabled}
+              errors={formErrors}
+            />
+          </Route>
+
+          <Route path='/'>
+            <Home/>
+          </Route>
+        </Switch>
       </div>
-    </>
+    </div>
   );
 };
 export default App;
