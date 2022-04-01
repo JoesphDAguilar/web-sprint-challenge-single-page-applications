@@ -6,38 +6,29 @@ export default function Form(props) {
   const history = useHistory();
 
   const {
-    name,
-    size,
-    pepperoni,
-    sausage,
-    pineapple,
-    mushrooms,
-    anchovies,
-    bacon,
-    specialIns,
-    onChange,
+    values,
     onSubmit,
-    disabled
+    onChange,
+    disabled,
+    errors
   } = props
-
-  const 
 
   return (
     <form onSubmit={onSubmit}>
 
-      <label>Name:
+      <label>Name For Order:
         <input
           name='name'
           type='text'
-          value={name}
+          value={values.name}
           onChange={onChange}
         />
       </label>
 
-      <label>Pizza Size:
+      <label>Pick Your Pizza Size:
         <select
           name='size'
-          value={size}
+          value={values.size}
           onChange={onChange}
         >
           <option value="">-- Select a Pizza Size --</option>
@@ -49,13 +40,13 @@ export default function Form(props) {
       </label>
       
       <div>
-        <h4>Pizza Toppings Selection</h4>
+        <h4>Pick Your Pizza Toppings:</h4>
 
         <label>Pepperoni:
           <input
             name='pepperoni'
             type='checkbox'
-            checked={pepperoni}
+            checked={values.pepperoni}
             onChange={onChange}
           />
         </label>
@@ -64,7 +55,7 @@ export default function Form(props) {
           <input 
             name='sausage'
             type='checkbox'
-            checked={sausage}
+            checked={values.sausage}
             onChange={onChange}
           />
         </label>
@@ -73,7 +64,7 @@ export default function Form(props) {
           <input
             name='pineapple'
             type='checkbox'
-            checked={pineapple}
+            checked={values.pineapple}
             onChange={onChange}
           />
         </label>
@@ -82,7 +73,7 @@ export default function Form(props) {
           <input
             name='mushrooms'
             type='checkbox'
-            checked={mushrooms}
+            checked={values.mushrooms}
             onChange={onChange}
           />
         </label>
@@ -91,7 +82,7 @@ export default function Form(props) {
           <input
             name='anchovies'
             type='checkbox'
-            checked={anchovies}
+            checked={values.anchovies}
             onChange={onChange}
           />
         </label>
@@ -100,7 +91,7 @@ export default function Form(props) {
           <input
             name='bacon'
             type='checkbox'
-            checked={'bacon'}
+            checked={values.bacon}
             onChange={onChange}
           />
         </label>
@@ -109,7 +100,7 @@ export default function Form(props) {
           <input
             name='specialIns'
             type='text'
-            value={specialIns}
+            value={values.specialIns}
             onChange={onChange}
           />
         </label>

@@ -5,9 +5,8 @@ const initialFormState = {
   size: '',
   pepperoni: false,
   sausage: false,
-  mushroom: false,
   pineapple: false,
-  bellPeppers: false,
+  mushrooms: false,
   anchovies: false,
   bacon: false,
   specialIns: ''
