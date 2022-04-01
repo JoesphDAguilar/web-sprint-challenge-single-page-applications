@@ -6,7 +6,7 @@ export default function  Home () {
 
     return(
         <div>
-            <button onClick={() => history.push('/pizza')}>Order Your Pizza Now!</button>
+            <button id='order-pizza' onClick={() => history.push('/pizza')}>Order Your Pizza Now!</button>
         </div>
     )
 }

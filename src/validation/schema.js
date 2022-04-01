@@ -17,7 +17,7 @@ const formSchema = yup.object().shape({
                 'med',
                 'large',
                 'xlarger'], 'Must choose a size!'),
-    specialInt: yup
+    specialIns: yup
         .string(),
                 
     pepperoni: yup.boolean(),
