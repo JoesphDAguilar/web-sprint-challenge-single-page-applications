@@ -4,6 +4,7 @@ import Form from "./Components/Form";
 
 const initialFormValues = {
   name: '',
+  email: '',
   size: '',
   pepperoni: false,
   sausage: false,
@@ -34,6 +35,7 @@ const App = () => {
 const formSubmit = () => {
   const newOrder = {
     name: formValue.name.trim(),
+    email: formValue.email.trim(),
     size: formValue.size,
     toppings: ['pepperoni', 
                 'sausage', 

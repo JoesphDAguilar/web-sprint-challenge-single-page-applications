@@ -40,13 +40,15 @@ export default function Form(props) {
 
     <div>
       <div>{errors.name}</div>
+      <div>{errors.email}</div>
       <div>{errors.size}</div>
     </div>
 
-    <form onSubmit={onSubmit}>
+    <form id="pizza-form" onSubmit={onSubmit}>
 
       <label>Name For Order:
         <input
+          id="name-input"
           name='name'
           type='text'
           value={values.name}
@@ -54,8 +56,18 @@ export default function Form(props) {
         />
       </label>
 
+      <label>Email For Order:
+        <input
+          name='email'
+          type='text'
+          value={values.email}
+          onChange={onChange}
+        />
+      </label>
+
       <label>Pick Your Pizza Size:
         <select
+          id="size-dropdown"
           name='size'
           value={values.size}
           onChange={onChange}
@@ -127,6 +139,7 @@ export default function Form(props) {
 
         <label>Special Instructions:
           <input
+            id="special-text"
             name='specialIns'
             type='text'
             value={values.specialIns}
@@ -134,7 +147,7 @@ export default function Form(props) {
           />
         </label>
       </div>
-        <button id='submitButton' disabled={disabled} type='submit'>Place Your Order</button>
+        <button id='order-button' disabled={disabled} type='submit'>Place Your Order</button>
     </form>
   </div>
   )
