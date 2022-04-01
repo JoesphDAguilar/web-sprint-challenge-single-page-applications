@@ -1,19 +1,48 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import image from '../Assets/Pizza.jpg'
 
 export default function Form(props) {
 
-  const history = useHistory();
-
   const {
     values,
-    onSubmit,
-    onChange,
+    submit,
+    change,
     disabled,
     errors
   } = props
 
+  const onSubmit = evt => {
+    evt.preventDefault();
+    submit();
+  }
+
+  const onChange = evt => {
+    const { name, value, checked, type } = evt.target;
+    const valueToUse = type === 'checkbox' ? checked : value;
+    change(name, valueToUse);
+  }
+
   return (
+  <div>
+    <nav>
+      <div>
+        <img src={image} alt='A fresh baked pizza' height={100} width={100} />
+      </div>
+      <div>
+        <Link to='/'>Home</Link>
+        <Link to='/pizza'>Pizza</Link>
+      </div>
+    </nav>
+
+    <h4>Build Your Pizza Here!</h4>
+
+    <div>
+      <div>{errors.name}</div>
+      <div>{errors.size}</div>
+    </div>
+
     <form onSubmit={onSubmit}>
 
       <label>Name For Order:
@@ -107,5 +136,6 @@ export default function Form(props) {
       </div>
         <button id='submitButton' disabled={disabled} type='submit'>Place Your Order</button>
     </form>
+  </div>
   )
 }
